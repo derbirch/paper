@@ -15,15 +15,17 @@ else if hexo-config("main_color") == "sun"
   $color-main = #ffa259
 else if hexo-config("main_color") == "sea"
   $color-main = #46b3e6
+else if hexo-config("main_color") == "canary"
+  $color-main = #eede67
 
 $color-auxiliary = lighten($color-main, 85%)
 
-$color-black = #222222
-$color-black-2 = #333333
-$color-black-3 = #444444
-$color-gray = #929292
-$color-light-gray = #cccccc
-$color-white = #ffffff
+$color-black = #001d2b
+$color-black-2 = #001d2b// main title color
+$color-black-3 = #001d2b// logo type color
+$color-gray = #898674
+$color-light-gray = #bab9b6
+$color-white = #FFFEFA
 
 // text
 // font-size
@@ -56,7 +58,7 @@ $line-height-l-2 = 8.2rem
 $line-height-l-3 = 10rem
 
 // font-family
-$font-family = "Noto Serif SC","SF Pro Text","SF Pro Icons","Helvetica Neue","Helvetica","Arial",sans-serif
+$font-family = "IBM Plex Sans","Noto Serif SC","SF Pro Text","SF Pro Icons","Helvetica Neue","Helvetica","Arial",sans-serif
 
 // screen
 $XXL = 1580px
