@@ -53,13 +53,13 @@ window.addEventListener('DOMContentLoaded', () => {
     
     // auto darkmode not perfect but usable XD
 
-    let prefersDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches;
-    if (prefersDarkMode) {
-      darkmode.turnOnDarkmode()
-    }
-    else {
-      darkmode.turnOffDarkmode()
-    }
+    //let prefersDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches;
+   // if (prefersDarkMode) {
+   //   darkmode.turnOnDarkmode()
+   // }
+   // else {
+  //    darkmode.turnOffDarkmode()
+  //  }
   })()
 
   // sidebar

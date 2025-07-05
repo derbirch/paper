@@ -6,9 +6,23 @@
 -     if (is_category()) pageTitle = 'Category: ' + page.category
 -     if (is_month()) pageTitle += ': ' + page.month + '/' + page.year
 -     if (is_year()) pageTitle += ': ' + page.year
--     if (pageTitle == '') return config.title
--      pageTitle += ' - ' + config.title
+-     pageTitle += ' [ ' + config.title + ' ] '
 -     return pageTitle
+- }
+
+- let getShortDescription = function() {
+-     if (is_post() && page.excerpt) return page.excerpt
+-     return config.description || '' // Fallback to a general site description
+- }
+
+- let getFeaturedImage = function() {
+-     if (is_post()) return page.thumbnail || page.banner || config.default_image
+-     return config.default_image // Provide a default image for other contexts
+- }
+
+- let getCanonicalUrl = function() {
+-     if (is_post()) return page.permalink
+-     return config.url // Provide site URL for non-post pages
 - }
 
 doctype html
@@ -29,6 +43,25 @@ html(lang=config.language)
       }
     meta(name="theme-color" content=colorMap[theme.main_color])
     title=getPageTitle()
+
+    //- Twitter Card meta tags
+    meta(name="twitter:card" content="summary_large_image")
+    meta(name="twitter:title" content=getPageTitle())
+    meta(name="twitter:description" content=getShortDescription())
+    meta(name="twitter:image" content=getFeaturedImage())
+    
+    //- Additional Twitter-specific meta tags
+    meta(name="twitter:site" content="@canary_review")
+    meta(name="twitter:creator" content="@canary_review")
+
+    //- Open Graph meta tags for better sharing on social media
+    meta(property="og:title" content=getPageTitle())
+    meta(property="og:description" content=getShortDescription())
+    meta(property="og:image" content=getFeaturedImage())
+    meta(property="og:url" content=getCanonicalUrl())
+
+    //- Canonical link
+    link(rel='canonical', href=getCanonicalUrl())
 
     //- inline the critical font
     style.
@@ -58,6 +91,7 @@ html(lang=config.language)
         script(src=url defer)
 
     include ./scripts/google-analytics-script
+    include ./scripts/comments-script
     include ./scripts/toc-script
     include ./scripts/math-script
 

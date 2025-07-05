@@ -3,7 +3,7 @@
   if !page.posts && (theme.toc === undefind || theme.toc === true)
     include ./toc
 
-  if theme.link === undefind || theme.link === true
+  //-if theme.link === undefind || theme.link === true
     h2 Links
     .sidebar__link
       if theme.social
@@ -11,12 +11,6 @@
           each url,label in theme.social
             li
               a(href=url_for(url)) #{label}
-
-  if theme.archives === undefind || theme.archives === true
-    h2 Archives
-    .sidebar__archives
-      != list_archives({type:"yearly", format: "YYYY", show_count: false})
-
   if theme.categories === undefind || theme.categories === true
     h2 Categories
     .sidebar__categories
@@ -27,3 +21,7 @@
     .sidebar__tags
       != list_tags({show_count: false})
 
+  if theme.archives === undefind || theme.archives === true
+    h2 Archives
+    .sidebar__archives
+      != list_archives({type:"yearly", format: "YYYY", show_count: false})
